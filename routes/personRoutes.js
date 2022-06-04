@@ -8,7 +8,7 @@ const Person = require('../models/Person')
 router.post('/', async (req, res) => {
 
     //req.body
-    const { name, email, rua, cidade, estado, approved } = req.body
+    const { name, email, rua, cidade, estado, password} = req.body
 
     if (!name) {
         res.status(422).json({ messege: 'O nome é obrigatorio' })
@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
         rua,
         cidade,
         estado,
-        approved
+        password
     }
 
     //create
@@ -79,7 +79,7 @@ router.patch('/:id', async (req, res) => {
 
     const id = req.params.id
 
-    const { name, email, rua, cidade, estado, approved } = req.body
+    const { name, email, rua, cidade, estado, password } = req.body
 
     const person = {
         name,
@@ -87,7 +87,7 @@ router.patch('/:id', async (req, res) => {
         rua,
         cidade,
         estado,
-        approved
+        password
     }
 
     try {

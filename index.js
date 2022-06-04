@@ -2,13 +2,15 @@
 require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
+var cors = require('cors')
 const app = express()
 
 //forma de ler jSON / middlewares
 app.use(
     express.urlencoded({
         extended: true
-    })
+    }),
+    cors()
 )
 
 app.use(express.json())
@@ -21,8 +23,7 @@ app.use('/person', personRoutes)
 //endpiont inicial
 app.get('/', (req, res) => (
 
-
-    res.json({ messege: 'Oi Mariana' })
+    res.json({ messege: 'Oi Roan' })
 ))
 
 const DB_USER = process.env.DB_USER

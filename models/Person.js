@@ -6,7 +6,7 @@ const Person = mongoose.model('Person', {
     rua: String,
     cidade: String,
     estado: String,
-    approved: Boolean
+    password:String,
 })
 
 module.exports = Person
