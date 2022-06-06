@@ -8,10 +8,17 @@ const Person = require('../models/Person')
 router.post('/', async (req, res) => {
 
     //req.body
-    const { name, email, rua, cidade, estado, password} = req.body
+    const { name, email, rua, cidade, estado, password } = req.body
 
     if (!name) {
         res.status(422).json({ messege: 'O nome é obrigatorio' })
+        return
+    }
+
+    const foundPerson = await Person.findOne({ "name": name });
+
+    if(foundPerson){
+        res.status(422).json({ messege: 'Pessoa já existe!' })
         return
     }
 
@@ -94,7 +101,7 @@ router.patch('/:id', async (req, res) => {
 
         const updatePerson = await Person.updateOne({ _id: id }, person)
 
-        if(updatePerson.matchedCount === 0 ){
+        if (updatePerson.matchedCount === 0) {
             res.status(422).json({ messege: 'O usuario nao foi encontrado!' })
             return
         }
@@ -110,7 +117,7 @@ router.patch('/:id', async (req, res) => {
 //Delete - deletar dados
 router.delete('/:id', async (req, res) => {
 
-    const id = req.params.id 
+    const id = req.params.id
 
     const person = await Person.findOne({ _id: id })
 
@@ -119,13 +126,13 @@ router.delete('/:id', async (req, res) => {
         return
     }
 
-    try{
+    try {
 
-        await Person.deleteOne({_id: id})
+        await Person.deleteOne({ _id: id })
 
-        res.status(200).json({messege: 'Usuario removido com sucesso!'})
+        res.status(200).json({ messege: 'Usuario removido com sucesso!' })
 
-    }catch (error) {
+    } catch (error) {
         res.status(500).json({ error: error })
     }
 
