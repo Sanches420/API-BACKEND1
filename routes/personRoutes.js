@@ -11,14 +11,14 @@ router.post('/', async (req, res) => {
     const { name, email, rua, cidade, estado, password } = req.body
 
     if (!name) {
-        res.status(422).json({ messege: 'O nome é obrigatorio' })
+        res.status(404).json({ messege: 'O nome é obrigatorio' })
         return
     }
 
     const foundPerson = await Person.findOne({ "name": name });
 
     if(foundPerson){
-        res.status(422).json({ messege: 'Pessoa já existe!' })
+        res.status(404).json({ messege: 'Pessoa já existe!' })
         return
     }
 
@@ -68,7 +68,7 @@ router.get('/:id', async (req, res) => {
         const person = await Person.findOne({ _id: id })
 
         if (!person) {
-            res.status(422).json({ messege: 'O usuario nao foi encontrado!' })
+            res.status(404).json({ messege: 'O usuario nao foi encontrado!' })
             return
         }
 
@@ -102,7 +102,7 @@ router.patch('/:id', async (req, res) => {
         const updatePerson = await Person.updateOne({ _id: id }, person)
 
         if (updatePerson.matchedCount === 0) {
-            res.status(422).json({ messege: 'O usuario nao foi encontrado!' })
+            res.status(404).json({ messege: 'O usuario nao foi encontrado!' })
             return
         }
 
@@ -122,7 +122,7 @@ router.delete('/:id', async (req, res) => {
     const person = await Person.findOne({ _id: id })
 
     if (!person) {
-        res.status(422).json({ messege: 'O usuario nao foi encontrado!' })
+        res.status(404).json({ messege: 'O usuario nao foi encontrado!' })
         return
     }
 
