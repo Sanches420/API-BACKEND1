@@ -30,12 +30,14 @@
   <tr>
     <td>React</td>
     <td>Bootstrap</td>
-    <td>Node</td>      
+    <td>Node</td>
+    <td>Mongoose</td>
   </tr>
   <tr>
     <td>v17.0.2</td>
     <td>v5.2</td>
-    <td>v8</td>       
+    <td>v8</td>
+    <td>v6.3.8</td>
    </tr> 
 <table/>
 
