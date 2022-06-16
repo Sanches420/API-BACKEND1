@@ -50,8 +50,6 @@
   
 ## Acesso a Pagina
 
-* `npm start`
-
 localhost:4000/graphiql
 
 This is your graphql playground, where you can try out graphql queries and mutations you've defined. The model of registration form.
